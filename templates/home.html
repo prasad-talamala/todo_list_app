@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Hello User, Welcome to our Todo List App..</h3>
+<hr>
+<div>
+
+    Here is our app for your to-do activities in daily life. <br><br>
+
+    With this app, you can <br><br>
+
+    <ul>
+        <li>create To-Do</li>
+        <li>change the importance of To-Do</li>
+        <li>mark the To-Do as completed</li>
+        <li>delete the To-Do when it is completed</li>
+    </ul>
+
+    Other Features in this app are <br><br>
+
+    <ul>
+        <li>create account using <a href="{% url 'signup' %}">sign-up</a> option</li>
+        <li><a href="{% url 'login' %}">login</a> and create To-Do list as per your requirement and change the priority
+            of To-Do
+        </li>
+    </ul>
+
+
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        $('#edit_button').on('click',function () {
+            $('#save_button').prop({'disabled':false, 'cursor':not-allowed});
+            $('#cancel_button').prop({'disabled':false, 'cursor':not-allowed});
+            $('#first_name').prop('disabled', false);
+            $('#last_name').prop('disabled', false);
+            $('#email').prop('disabled', false);
+        });
+        $('#cancel_button').on('click',function () {
+            $('#save_button').prop('disabled', true);
+            $('#cancel_button').prop('disabled', true);
+            $('#first_name').prop('disabled', true);
+            $('#last_name').prop('disabled', true);
+            $('#email').prop('disabled', true);
+        });
+    });
+</script>
+
+
+<div class="row justify-content-center mt-10">
+    <div class="col-md-10">
+        <h1 style="color: blue;">{{ user_data.username|title }} Data <a style="float:right; cursor: pointer; color:red;" id="edit_button"><i
+                class="fa fa-pencil-square" aria-hidden="true"></i></a></h1>
+        <hr>
+    </div>
+
+    <div class="col-md-10">
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="userid">User ID</span>
+                <input type="text" class="form-control" placeholder="User ID" aria-label="User ID"
+                       aria-describedby="userid" value="{{ user_data.id }}" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="username">Username</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                       aria-describedby="username" value="{{ user_data.username }}" disabled>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Firstname</span>
+                <input id="first_name" type="text" class="form-control" placeholder="No Firstname" aria-label="Firstname"
+                       name="first_name" value="{{ user_data.first_name }}" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" >Lastname</span>
+                <input id="last_name" type="text" class="form-control" placeholder="No Lastname" aria-label="Lastname"
+                       name="last_name" value="{{ user_data.last_name }}" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Email</span>
+                <input id="email" type="text" class="form-control" placeholder="No Email" aria-label="Email"
+                       name="email" value="{{ user_data.email }}" disabled>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="date_joined">Date Joined</span>
+                <input type="text" class="form-control" placeholder="Date Joined" aria-label="Date Joined"
+                       aria-describedby="date_joined" value="{{ user_data.date_joined }}" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="last_login">Last Login</span>
+                <input type="text" class="form-control" placeholder="Last Login" aria-label="Last Login"
+                       aria-describedby="last_login" value="{{ user_data.last_login }}" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="password">Password</span>
+                <input type="text" class="form-control" placeholder="Password" aria-label="Password"
+                       aria-describedby="password" value="{{ user_data.password }}" disabled>
+            </div>
+
+            <button id="save_button" type="submit" class="btn btn-success" style="cursor:pointer;" disabled>Save</button>
+            <button id="cancel_button" class="btn btn-warning" disabled>Cancel</button>
+
+        </form>
+    </div>
+
+
+</div>
+
+{% endblock %}

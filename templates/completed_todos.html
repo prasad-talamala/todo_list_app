@@ -1,0 +1,31 @@
+{% extends 'todos.html' %}
+
+{% block innercontent %}
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <h1>Completed Todos</h1>
+    </div>
+</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        {% if todos %}
+        <div class="list-group">
+            {% for todo in todos %}
+            <a href="{% url 'view_todo' todo.id %}"
+               class="list-group-item list-group-item-action {% if todo.important %} list-group-item-danger{% endif %}">
+                <b>{{ todo.title }}</b> - Completed on {{ todo.completed|date:'M j Y H:i' }}</a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center">
+            <h2>Looks like you didn't created any todos! Go ahead and create few.</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'create_todo' %}">Create Todo</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

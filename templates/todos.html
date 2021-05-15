@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <h3>Welcome 🙏 , {{ user.first_name }} {{ user.last_name }}
+        <a class="btn btn-success" role="button" href="{% url 'completed_todos' %}"
+           style="padding-block: inherit; float: right; margin: 4px;">Completed Todos</a>
+        <a class="btn btn-primary" role="button" href="{% url 'current_todos' %}"
+           style="padding-block: inherit; float: right; margin: 4px;">Current Todos</a>
+        <a role="button" class="btn btn-warning" href="{% url 'create_todo' %}"
+           style="padding-block: inherit; float: right; margin: 4px;">Create Todo</a>
+    </h3>
+</div>
+
+{% block innercontent %}
+
+<br> Other Features in this app are <br><br>
+
+<ul>
+    <li>you can <a href="{% url 'create_todo' %}">create a todo</a> option</li>
+    <li>list of todos <a href="{% url 'current_todos' %}">current todos</a> option</li>
+    <li>you can <a href="{% url 'view_todo' 1 %}">view and update todo</a> which is in To-Do list as per your
+        requirement and change the importance of To-Do
+    </li>
+    <li>you can update as <a href="{% url 'completed_todos' %}">completed todos</a></li>
+    <li>you can update your <a href="{% url 'profile' %}">profile</a> like [ <strong style="color:red">first name,
+        last name, email</strong> ]
+    </li>
+    <li>you can change your password with <a href="{% url 'change_password' %}">change password</a> option</li>
+</ul>
+{% endblock %}
+
+
+{% endblock %}
